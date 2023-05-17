@@ -1,0 +1,45 @@
+
+
+CREATE TABLE Employer (
+  employer_id INT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  industry VARCHAR(255) NOT NULL,
+  location VARCHAR(255) NOT NULL
+);
+
+
+CREATE TABLE HRDepartment (
+  department_id INT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  contact_person VARCHAR(255) NOT NULL,
+  contact_email VARCHAR(255) NOT NULL,
+  employer_id INT,
+  FOREIGN KEY (employer_id) REFERENCES Employer (employer_id)
+);
+
+
+CREATE TABLE Candidate (
+  candidate_id INT PRIMARY KEY,
+  first_name VARCHAR(255) NOT NULL,
+  last_name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  phone_number VARCHAR(255) NOT NULL,
+  address VARCHAR(255) NOT NULL,
+  skills VARCHAR(255) NOT NULL,
+  education VARCHAR(255) NOT NULL,
+  experience VARCHAR(255) NOT NULL
+);
+
+
+CREATE TABLE JobPost (
+  job_post_id INT PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  description VARCHAR(255) NOT NULL,
+  requirements VARCHAR(255) NOT NULL,
+  application DATE NOT NULL,
+  deadline DATE NOT NULL,
+  date_posted DATE NOT NULL,
+  employer_id INT,
+  FOREIGN KEY (employer_id) REFERENCES Employer (employer_id)
+);
+
